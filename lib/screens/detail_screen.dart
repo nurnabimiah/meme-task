@@ -24,10 +24,14 @@ class _DetailScrenState extends State<DetailScren> {
               expandedHeight: 300,
               flexibleSpace: FlexibleSpaceBar(
                 //title: Text(widget.memes!.name.toString(),style: TextStyle(color: Colors.black),),
-                /*title: ListTile(
-                  trailing: TextButton(onPressed: () {  },
-                  child: Text('Edit'),),
-                ),*/
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    IconButton(onPressed: (){}, icon: Icon(Icons.rotate_90_degrees_ccw),color: Colors.indigoAccent,),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.crop),color: Colors.indigoAccent,),
+                  ],
+                ),
                 background: Hero(
                   tag: widget.memes!.id.toString(),
                   child: FittedBox(child: Image.network(widget.memes!.url.toString(),)),
@@ -40,28 +44,26 @@ class _DetailScrenState extends State<DetailScren> {
                 delegate: SliverChildListDelegate(
                   [
                     ListTile(
-                      title: Text(widget.memes!.name.toString(),style: TextStyle(fontSize: 26),),
-                      trailing: Text(widget.memes!.captions.toString(),style: TextStyle(fontSize: 26),) ,
+                      title: Text(widget.memes!.name.toString(),style: TextStyle(fontSize: 26,color: Colors.green),),
+                      trailing: Text('Count: ${widget.memes!.boxCount.toString()}',style: TextStyle(fontSize: 26,color: Colors.red)) ,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: Text('Height : ${widget.memes!.height.toString()}',style: TextStyle(fontSize: 22)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: Text('Width : ${widget.memes!.width.toString()}',style: TextStyle(fontSize: 22)),
-                    ),
+                      padding: const EdgeInsets.only(left: 19.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Height : ${widget.memes!.height.toString()}',style: TextStyle(fontSize: 20)),
+                          SizedBox(height: 10,),
+                          Text('Width : ${widget.memes!.width.toString()}',style: TextStyle(fontSize: 20)),
+                        ],
+                      ),
+                    )
                   ],
                 ) )
           ],
         ),
       )
 
-
-
-      /*body: Container(
-        child: Text(widget.memes!.name.toString()),
-      ),*/
     );
   }
 }
